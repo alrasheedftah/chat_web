@@ -1,0 +1,49 @@
+<%- include('parts/header')%>
+
+<%- include('parts/navbar')%>
+
+<div class="container text-center">
+    <h3>Create Account </h3>
+    <form action="/signup" method="post">
+        <input type="text" class="form-control" name="username" placeholder="username">
+        <% let usernameError=validationError.find(err=> err.param == 'username') %>
+        <% if(usernameError){%>
+            <p class="alert alert-danger">
+                <%= usernameError.msg %>
+            </p>
+            <%}%>
+        <input type="text" class="form-control" name="email" placeholder="E-mail">
+        <% let emailError=validationError.find(err=> err.param == 'email') %>
+        <% if(emailError){%>
+            <p class="alert alert-danger">
+                <%= emailError.msg %>
+            </p>
+            <%}%>
+        <input type="password" class="form-control" name="password" placeholder="password">
+        <% let passwordError=validationError.find(err=> err.param == 'password') %>
+        <% if(passwordError){%>
+            <p class="alert alert-danger">
+                <%= passwordError.msg %>
+            </p>
+            <%}%>
+        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+        <input type="submit" class="btn btn-primary" name="createAcount" value="Create Account">
+
+    </form>
+
+    <br>
+<!-- 
+    <% for(let error of validationError){ %>
+        <p class="alert alert-danger">
+            <%= error.msg %>
+        </p>
+<%}%> -->
+    <br>
+    <div>
+        Already have Account <a href="/login">Login</a>
+    </div>
+</div>
+
+
+
+<%-include('parts/footer')%>

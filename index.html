@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Socket IO</h1>
+
+    <button onclick="send()">Send</button>
+
+    <button onclick="join()">Join</button>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+    
+    let socket=io()
+    socket.on('connect',()=>{
+        console.log("Connected ")
+    })
+
+
+    socket.on("newmsg",()=>{
+        console.log("Server Event Recived ")
+    })
+
+
+    function join(){
+        socket.emit("joinRoom",{name:"ana morsal",age:22})
+    }
+
+
+    function send(){
+        socket.emit("sendmsg",{name:"ana morsal",age:22})
+    }
+
+    </script>
+    
+</body>
+
+
+</html>
